@@ -1,0 +1,21 @@
+body{
+    background-color: #ebebeb !important;
+}
+.rounded-circle{
+    width: 30px;
+    height: 30px;
+}
+.nav_bar{
+    background-color: white;
+}
+.content-page{
+    margin-top: 20px;
+}
+.page-title{
+    font-size: 30px;
+    color: rgb(36, 36, 206);
+}
+thead {
+    background-color: rgb(36, 36, 206);
+    color: white;
+}
