@@ -16,7 +16,7 @@ body{
     color: rgb(36, 36, 206);
 }
 thead {
-    background-color: rgb(36, 36, 206);
+    background-color: #3780eb;
     color: white;
 }
 .search{
@@ -48,4 +48,34 @@ input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width
 
 .effect-1 ~ .focus-border{position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #3399FF; transition: 0.4s;}
 .effect-1:focus ~ .focus-border{width: 100%; transition: 0.4s;}
+.input-text {
+    display: block;
+    width: 100%;
+    color: gray;
+    border-width: 0 0 1px 0;
+    border-color: #cccccc;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    padding-bottom: 9px;
+    padding-top: 6px;
+}
+.input-text:focus {
+    outline: none;
+}
+.input-text:focus + .label,
+.input-text.not-empty + .label {
+    -webkit-transform: translateY(-24px);
+    transform: translateY(-24px);
+}
 
+.search{
+    padding-top: 9px;
+    color: #4ca4fc;
+}
+.chart{
+    color: #4ca4fc;
+}
+.btn-primary{
+    border-radius: 20px;
+}
