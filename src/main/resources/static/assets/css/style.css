@@ -2,8 +2,8 @@ body{
     background-color: #ebebeb !important;
 }
 .rounded-circle{
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
 }
 .nav_bar{
     background-color: white;
@@ -22,7 +22,9 @@ thead {
 .search{
     margin-bottom: 20px;
 }
-
+.notification, .check, .chart{
+    color: #4ca4fc;
+}
 /*= Reset CSS 
 ============= */
 /* html, body {border: 0; margin: 0; padding: 0;}
@@ -69,13 +71,49 @@ input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width
     transform: translateY(-24px);
 }
 
-.search{
-    padding-top: 9px;
+.searchIcon{
+    padding-top: 6px;
     color: #4ca4fc;
 }
-.chart{
-    color: #4ca4fc;
-}
+
 .btn-primary{
     border-radius: 20px;
 }
+
+.form_search{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-right: 1px solid #cccccc;
+    
+}
+
+.status{
+    color: gray;
+    margin-top: 6px;
+}
+
+.student_detail, .search{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 15px;
+}
+
+.search{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #cccccc;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.back_out{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-right: 1px solid #cccccc;
+}
+
