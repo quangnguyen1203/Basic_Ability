@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>ログイン</title>
 	<meta charset="UTF-8">
@@ -101,9 +101,16 @@
             data: JSON.stringify(customer)
         }).done((user) => {
         	console.log(user)
-            if  (user.roles[0].authority === "STUDENT"){
-                window.location.href = "home";
-            } else {
+            if  (user.roles[0].authority === "学生"){
+                window.location.href = "student";
+            } else if(user.roles[0].authority === "先生"){
+            	window.location.href = "teacher";
+            } else if(user.roles[0].authority === "家族"){
+            	window.location.href = "parent";
+            }else if(user.roles[0].authority === "カウンセラー"){
+            	window.location.href = "doctor";
+            }
+            else {
                 window.location.href = "login";
             }
             App.setCookie("JWT", user.token);

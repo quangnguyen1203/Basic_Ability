@@ -39,12 +39,12 @@ public class UserController {
         return userName;
     }
 
-    @GetMapping("/create")
+    @GetMapping("/user/create")
     public ModelAndView createForm(){
         return new ModelAndView("dashboard/user/create");
     }
 
-    @GetMapping("/getUser")
+    @GetMapping("/user/getUser")
     public ResponseEntity<UserPrincipal> getUserByUsername(){
         return new ResponseEntity<>(userService.findByUsername(getPrincipal()), HttpStatus.OK);
     }

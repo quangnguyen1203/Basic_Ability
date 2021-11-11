@@ -71,7 +71,9 @@ class App {
             type:"GET",
             url: "/user/getUser"
         }).done(function (user){
-            $("#user").html(`${user.username}`);
+            $("#user").html(`こにちわ ${user.username}
+                            </br>
+                             ${user.authorities[0]}`);
             $("#username-hidden").val(user.username);
         })
     }

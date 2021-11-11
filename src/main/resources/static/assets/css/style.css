@@ -115,5 +115,19 @@ input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width
     outline: 0;
     background: transparent;
     border-right: 1px solid #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_logout{
+	display: flex;
+    justify-content: center;
+}
+
+.nav_header{
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 

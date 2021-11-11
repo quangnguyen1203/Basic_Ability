@@ -4,6 +4,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,13 +29,27 @@ public class ManagerController {
     public ModelAndView login() {
         return new ModelAndView("login");
     }
-    
-    @GetMapping("/home")
-	/* @PreAuthorize("hasAnyAuthority('ADMIN')") */
-    public ModelAndView homePage() {
-        return new ModelAndView("doctor");
+    @GetMapping("/doctor")
+	 @PreAuthorize("hasAnyAuthority('カウンセラー')") 
+    public ModelAndView homePageDoctor() {
+        return new ModelAndView("doctor/doctor");
     }
     
+    @GetMapping("/teacher")
+	 @PreAuthorize("hasAnyAuthority('先生')") 
+    public ModelAndView homePageTeacher() {
+        return new ModelAndView("teacher/teacher");
+    }
+    @GetMapping("/parent")
+	 @PreAuthorize("hasAnyAuthority('家族')")
+    public ModelAndView homePageParent() {
+        return new ModelAndView("parent/parent");
+    }
+    @GetMapping("/student")
+	 @PreAuthorize("hasAnyAuthority('学生')") 
+    public ModelAndView homePageStudent() {
+        return new ModelAndView("student/student");
+    }
     @GetMapping(value="/logout")
     public ModelAndView Logout(HttpServletRequest request, HttpServletResponse response) {
 

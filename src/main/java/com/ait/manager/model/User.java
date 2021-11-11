@@ -1,14 +1,8 @@
 package com.ait.manager.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import java.util.List;
+
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +35,18 @@ public class User {
     @ManyToOne(targetEntity = Role.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private Role role;
+    
+    @ManyToOne(targetEntity = Class.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "class_id")
+    private Class aClass;
+
+    @OneToMany
+    private List<Post> posts;
+
+    @OneToMany
+    private List<Factorial> factorials;
+    
+    private Long parentID;
 
     public User(String username, String password, String fullName, Role role) {
         this.username = username;
