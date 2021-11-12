@@ -1,5 +1,7 @@
 package com.ait.manager.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +51,13 @@ public class UserController {
     public ResponseEntity<UserPrincipal> getUserByUsername(){
         return new ResponseEntity<>(userService.findByUsername(getPrincipal()), HttpStatus.OK);
     }
-
+    
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Optional<User>> getUserById(@PathVariable Long id) {
+    	Optional<User> optional = userService.findById(id);
+    	return new ResponseEntity<>(optional,HttpStatus.OK);
+    }
+    
     @GetMapping("/user-deleted")
     public ModelAndView getDeletedUsersForm(){
         return new ModelAndView("dashboard/user/deleted");

@@ -9,11 +9,13 @@ import com.ait.manager.model.User;
 import com.ait.manager.security.UserPrincipal;
 
 public interface UserService extends UserDetailsService {
+	Optional<User> findById(Long id);
+	
     Iterable<User> findAll();
 
     User createUser(User user);
 
-    Optional<User> findUserById(Long id);
+//    Optional<User> findUserById(Long id);
 
     UserPrincipal findByUsername(String username);
 

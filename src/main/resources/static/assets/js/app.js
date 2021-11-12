@@ -71,10 +71,17 @@ class App {
             type:"GET",
             url: "/user/getUser"
         }).done(function (user){
-            $("#user").html(`こにちわ ${user.username}
-                            </br>
-                             ${user.authorities[0]}`);
-            $("#username-hidden").val(user.username);
+				$("#user").html(`こにちわ ${user.username}
+	                            </br>
+	                             ${user.authorities[0]}`);
+	            $("#username-hidden").val(user.username);
+			$.ajax({
+            type:"GET",
+            url: `/user/${user.userId}`
+			}).done(function(user1){
+				$(".nav_header_img").html(`<img src="assets/images/${user1.avatar}" alt="picture" class="rounded-circle">`)
+				}
+			) 
         })
     }
 

@@ -69,10 +69,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAllByDeletedTrue();
     }
 
-    @Override
-    public Optional<User> findUserById(Long id){
-        return userRepository.findById(id);
-    }
+//    @Override
+//    public Optional<User> findUserById(Long id){
+//        return userRepository.findById(id);
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -102,4 +102,10 @@ public class UserServiceImpl implements UserService {
     public Iterable<User> findByUserRoleStaff(Long id) {
         return userRepository.findByUserRoleStaff(id);
     }
+
+	@Override
+	public Optional<User> findById(Long id) {
+		// TODO Auto-generated method stub
+		return userRepository.findById(id);
+	}
 }

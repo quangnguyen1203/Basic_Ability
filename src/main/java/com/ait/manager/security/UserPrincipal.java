@@ -4,9 +4,10 @@ import java.util.Collection;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
+@Data
 @Getter
 @Setter
 public class UserPrincipal implements UserDetails {

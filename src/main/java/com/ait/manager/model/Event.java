@@ -3,6 +3,9 @@ package com.ait.manager.model;
 import lombok.*;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Data
@@ -19,6 +22,7 @@ public class Event {
     private String event_name;
     private String event_icon;
 
+    @JsonIgnore
     @OneToMany(targetEntity = Post.class, fetch = FetchType.EAGER)
     private List<Post> posts;
 

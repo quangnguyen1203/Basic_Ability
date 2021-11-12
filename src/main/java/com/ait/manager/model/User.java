@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +33,8 @@ public class User {
     @Column(nullable = false)
     private String fullName;
 
+    @Column(nullable = false)
+    private String avatar;
 
     @ManyToOne(targetEntity = Role.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
@@ -39,10 +43,12 @@ public class User {
     @ManyToOne(targetEntity = Class.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "class_id")
     private Class aClass;
-
+    
+    @JsonIgnore
     @OneToMany
     private List<Post> posts;
 
+    @JsonIgnore
     @OneToMany
     private List<Factorial> factorials;
     

@@ -18,7 +18,7 @@ public class UserPrinciple implements UserDetails {
     private String username;
 
     private String password;
-
+    
     private Collection<? extends GrantedAuthority> roles;
 
     public UserPrinciple(Long id,
