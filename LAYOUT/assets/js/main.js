@@ -9,3 +9,6 @@
       }
     })
   });
+  $(function(){
+    $(".chosen-select").chosen(); 
+})
