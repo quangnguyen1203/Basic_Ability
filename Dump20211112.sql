@@ -52,7 +52,7 @@ CREATE TABLE `comments` (
   `post_post_id` bigint DEFAULT NULL,
   PRIMARY KEY (`cmt_id`),
   KEY `FK2dgdoh41vnobahepwimydikli` (`post_post_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,6 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'xyz',1),(2,'32321',2),(3,'123123',4);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +110,6 @@ CREATE TABLE `events_posts` (
 
 LOCK TABLES `events_posts` WRITE;
 /*!40000 ALTER TABLE `events_posts` DISABLE KEYS */;
-INSERT INTO `events_posts` VALUES (1,1),(2,2),(7,4);
 /*!40000 ALTER TABLE `events_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,6 +139,38 @@ INSERT INTO `factorials` VALUES (1,'#主体性','主体性'),(2,'#働きかけ�
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `list_all_student`
+--
+
+DROP TABLE IF EXISTS `list_all_student`;
+/*!50001 DROP VIEW IF EXISTS `list_all_student`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `list_all_student` AS SELECT 
+ 1 AS `id`,
+ 1 AS `fullName`,
+ 1 AS `user_code`,
+ 1 AS `class_name`,
+ 1 AS `event_name`,
+ 1 AS `factorial_hashtag`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `list_student`
+--
+
+DROP TABLE IF EXISTS `list_student`;
+/*!50001 DROP VIEW IF EXISTS `list_student`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `list_student` AS SELECT 
+ 1 AS `id`,
+ 1 AS `fullName`,
+ 1 AS `user_code`,
+ 1 AS `class_name`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `post_detail`
 --
 
@@ -154,7 +184,7 @@ CREATE TABLE `post_detail` (
   `post_id` bigint DEFAULT NULL,
   `user_id` bigint DEFAULT NULL,
   PRIMARY KEY (`post_detail_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +193,7 @@ CREATE TABLE `post_detail` (
 
 LOCK TABLES `post_detail` WRITE;
 /*!40000 ALTER TABLE `post_detail` DISABLE KEYS */;
-INSERT INTO `post_detail` VALUES (1,1,1,1,4),(2,1,2,1,4),(3,1,3,1,4),(4,2,1,2,4),(5,2,7,2,4),(6,3,9,4,6),(8,4,12,5,4);
+INSERT INTO `post_detail` VALUES (1,1,3,1,4),(2,2,6,5,6),(5,3,NULL,11,7),(6,4,NULL,12,7),(7,5,1,3,4),(8,6,5,13,9),(9,7,7,13,9);
 /*!40000 ALTER TABLE `post_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,15 +233,15 @@ CREATE TABLE `posts` (
   `action` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `capacity` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `power` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int DEFAULT NULL,
   `think` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `work_completed` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `events_event_id` bigint DEFAULT NULL,
-  `users_id` bigint DEFAULT NULL,
+  `event_id` bigint DEFAULT NULL,
+  `user_id` bigint DEFAULT NULL,
   PRIMARY KEY (`post_id`),
-  KEY `FKeyke76m1mjwtom410aalavq0k` (`events_event_id`),
-  KEY `FKhc5cfu63utmr42sr1v1tsr7so` (`users_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `FKtnoimyc2wv6tiasoiioxy0rnq` (`event_id`),
+  KEY `FK5lidm6cqbc7u4xhqpxm898qme` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +250,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,'abc','abc','abc','UN','abc','abc',1,4),(2,'xyz','xyz','xyz','CED','xyz','xyz',2,4),(3,'tyu','tyu','tyu','UN','tyu','tyu',3,4),(4,'hgf','hgf','hgf','CED','fh','fgh',4,6),(5,'xcv','xcv','xcv','UN','zxv','zv',5,4);
+INSERT INTO `posts` VALUES (1,'Earum excepteur volu','Atque id error pari','Obcaecati non culpa ',0,'Debitis rerum sunt ','Mollitia culpa verit',2,4),(2,'Consectetur occaeca','Id quis temporibus a','Dolor optio nihil e',1,'Doloremque officia q','Impedit maxime dolo',5,4),(3,'Asperiores unde recu','Perferendis consecte','Perferendis esse am',2,'Omnis dolor eos duci','Blanditiis non aliqu',3,4),(4,'Omnis maxime ad laud','Quasi consequuntur d','Sed in eos possimus',1,'Inventore minim ulla','Rem quis qui perspic',4,4),(5,'Sapiente non maiores','Quis animi sunt ist','Amet vero porro eli',2,'Deleniti omnis delen','Porro ipsum recusand',7,6),(6,'Tenetur labore quaer','Pariatur Temporibus','Excepturi beatae tem',2,'Fuga Nisi repellend','Eius dolorem aliquam',6,6),(7,'Iure fuga Soluta de','Cillum qui magnam a ','Expedita consequuntu',0,'Magna ut anim nihil ','Commodo odio volupta',8,6),(8,'Esse beatae enim et ','Officia sed expedita','Nam non iure in repe',0,'Sapiente proident v','Nemo esse sunt per',5,4),(9,'Eveniet ad odit con','Nihil duis accusanti','Qui illo in qui adip',0,'Consequatur id hic ','Sit est culpa sunt ',1,4),(10,'Consequatur consequ','Accusantium labore q','Quo reiciendis tempo',0,'Ad eos ipsam quam t','Accusantium iste und',2,4),(11,'Amet deserunt aut i','Esse perferendis ve','Consequatur eiusmod ',0,'Iure quia aute alias','Error id possimus f',4,7),(12,'Tempore dolorem et ','Nihil fugiat in tene','Dolores aliquid cum ',0,'Consequat Corporis ','Dolores voluptates e',2,7),(13,'Sint eos sed anim am','Suscipit a hic non l','Repudiandae sed nisi',0,'Dolor ipsum molesti','Velit dolores eum do',7,9);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,7 +340,7 @@ CREATE TABLE `user_class_post` (
   `post_id` bigint DEFAULT NULL,
   `user_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,7 +349,7 @@ CREATE TABLE `user_class_post` (
 
 LOCK TABLES `user_class_post` WRITE;
 /*!40000 ALTER TABLE `user_class_post` DISABLE KEYS */;
-INSERT INTO `user_class_post` VALUES (1,2,1,4),(2,2,2,4),(3,2,3,4),(4,5,4,6),(5,4,5,4);
+INSERT INTO `user_class_post` VALUES (1,4,1,4),(2,4,2,4),(3,4,3,4),(4,4,4,4),(5,5,5,6),(6,5,6,6),(7,5,7,6),(8,8,8,4),(9,8,9,4),(10,8,10,4),(12,7,11,7),(13,7,12,7),(14,8,NULL,8),(15,9,NULL,9),(16,9,13,9);
 /*!40000 ALTER TABLE `user_class_post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -340,10 +370,11 @@ CREATE TABLE `users` (
   `class_id` bigint DEFAULT NULL,
   `role_id` bigint DEFAULT NULL,
   `avatar` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKteip88j90fbo9odnc9gxpq6n1` (`class_id`),
   KEY `FKp56c1712k691lhsyewcssf40f` (`role_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -352,7 +383,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,0,'Doctor',NULL,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','doctor',NULL,4,'avatar_doctor.png'),(2,0,'Parent1',NULL,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','parent1',NULL,3,'avatar_teacher.png'),(3,0,'Teacher',NULL,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','teacher',NULL,2,'avatar_teacher1.jpg'),(4,0,'Student1',2,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','student1',4,1,'avatar_sudent1.jpg'),(5,0,'Parent2',NULL,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','parent2',NULL,3,'avatar_parent2.png'),(6,0,'Student2',5,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','student2',5,1,'avatar_student2.png');
+INSERT INTO `users` VALUES (1,0,'Doctor',NULL,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','doctor',NULL,4,'avatar_doctor.png',NULL),(2,0,'Parent1',NULL,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','parent1',NULL,3,'avatar_teacher.png',NULL),(3,0,'Teacher',NULL,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','teacher',NULL,2,'avatar_teacher1.jpg',NULL),(4,0,'Student1',2,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','student1',8,1,'avatar_student1.jpg','ST0001'),(5,0,'Parent2',NULL,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','parent2',NULL,3,'avatar_parent2.png',NULL),(6,0,'Student2',5,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','student2',5,1,'avatar_student2.png','ST0002'),(7,0,'Student3',2,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','student3',7,1,'avatar_student2.png','ST0003'),(8,0,'Student4',5,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','student4',4,1,'avatar_student2.png','ST0004'),(9,0,'Student5',2,'$2a$10$z58oyk/wi9vXXo2Db9c3Ju6xP1hJVGXcHzrIFJ4ybFiv3XGNTI4Yq','student5',9,1,'avatar_student2.png','ST0005');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -403,6 +434,42 @@ LOCK TABLES `users_posts` WRITE;
 /*!40000 ALTER TABLE `users_posts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users_posts` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `list_all_student`
+--
+
+/*!50001 DROP VIEW IF EXISTS `list_all_student`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `list_all_student` AS select `ls`.`id` AS `id`,`ls`.`fullName` AS `fullName`,`ls`.`user_code` AS `user_code`,`ls`.`class_name` AS `class_name`,group_concat(distinct `e`.`event_name` separator ',') AS `event_name`,group_concat(distinct `f`.`factorial_hashtag` separator ',') AS `factorial_hashtag` from (((((`user_class_post` `ucl` left join `list_student` `ls` on((`ls`.`id` = `ucl`.`user_id`))) left join `posts` `p` on((`p`.`post_id` = `ucl`.`post_id`))) left join `events` `e` on((`p`.`event_id` = `e`.`event_id`))) left join `post_detail` `pd` on((`ls`.`id` = `pd`.`user_id`))) left join `factorials` `f` on((`f`.`factorial_id` = `pd`.`factorial_id`))) where (`ls`.`id` = `ucl`.`user_id`) group by `ls`.`id` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `list_student`
+--
+
+/*!50001 DROP VIEW IF EXISTS `list_student`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `list_student` AS select distinct `u`.`id` AS `id`,`u`.`full_name` AS `fullName`,`u`.`user_code` AS `user_code`,`c`.`class_name` AS `class_name` from (`users` `u` join `classes` `c` on((`u`.`class_id` = `c`.`class_id`))) where (`u`.`class_id` = `c`.`class_id`) group by `c`.`class_id` order by `u`.`user_code` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -413,4 +480,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-12 15:32:31
+-- Dump completed on 2021-11-17 16:47:14

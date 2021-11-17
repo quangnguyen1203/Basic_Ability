@@ -89,8 +89,6 @@
             username: $("#username").val(),
             password: $("#password").val()
         };
-
-        console.log(customer)
         $.ajax({
             type: "POST",
             headers: {
@@ -100,7 +98,6 @@
             url: "/api/login",
             data: JSON.stringify(customer)
         }).done((user) => {
-        	console.log(user)
             if  (user.roles[0].authority === "学生"){
                 window.location.href = "student";
             } else if(user.roles[0].authority === "先生"){

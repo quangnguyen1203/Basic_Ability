@@ -79,9 +79,8 @@ class App {
             type:"GET",
             url: `/user/${user.userId}`
 			}).done(function(user1){
-				$(".nav_header_img").html(`<img src="assets/images/${user1.avatar}" alt="picture" class="rounded-circle">`)
-				}
-			) 
+				$(".nav_header_img").html(`<img src="/assets/images/${user1.avatar}" alt="picture" class="rounded-circle">`)
+			}) 
         })
     }
 

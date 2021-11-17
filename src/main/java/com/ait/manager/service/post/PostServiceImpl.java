@@ -1,12 +1,15 @@
 package com.ait.manager.service.post;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ait.manager.model.Factorial;
 import com.ait.manager.model.Post;
 import com.ait.manager.model.dto.PostDTO;
+import com.ait.manager.model.dto.StudentDTO;
 import com.ait.manager.repository.PostRepository;
 
 @Service
@@ -42,6 +45,18 @@ public class PostServiceImpl implements PostService {
 	public Iterable<PostDTO> allListPost() {
 		// TODO Auto-generated method stub
 		return postRepository.allListPost();
+	}
+
+	@Override
+	public Iterable<PostDTO> allListByHashtag(String factorials) {
+		// TODO Auto-generated method stub
+		return postRepository.allListByHashtag(factorials);
+	}
+
+	@Override
+	public Iterable<StudentDTO> listStudentDetail(Long id) {
+		// TODO Auto-generated method stub
+		return postRepository.listStudentDetail(id);
 	}
 
 }

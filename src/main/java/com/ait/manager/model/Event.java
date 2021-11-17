@@ -22,7 +22,6 @@ public class Event {
     private String event_name;
     private String event_icon;
 
-    @JsonIgnore
     @OneToMany(targetEntity = Post.class, fetch = FetchType.EAGER)
     private List<Post> posts;
 
@@ -31,4 +30,8 @@ public class Event {
         this.event_icon = event_icon;
         this.posts = posts;
     }
+
+	public Event(Long event_id) {
+		this.event_id = event_id;
+	}
 }

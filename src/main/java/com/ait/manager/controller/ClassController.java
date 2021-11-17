@@ -14,7 +14,7 @@ public class ClassController {
 	@Autowired
 	private ClassServiceImpl classServiceImpl;
 	
-	@GetMapping("/class/listClass")
+	@GetMapping("/class/list-class")
 	public ResponseEntity<Iterable<com.ait.manager.model.Class>> getAllListClass(){
 		return new ResponseEntity<>(classServiceImpl.findAll(),HttpStatus.OK);
 	}

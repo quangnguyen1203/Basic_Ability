@@ -53,6 +53,9 @@ public class User {
     private List<Factorial> factorials;
     
     private Long parentID;
+    
+    @Column(unique = true)
+    private String user_code;
 
     public User(String username, String password, String fullName, Role role) {
         this.username = username;

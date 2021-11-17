@@ -25,4 +25,11 @@ public class Factorial {
 		this.factorial_name = factorial_name;
 		this.factorial_hashtag = factorial_hashtag;
 	}
+
+	public Factorial(String factorial_hashtag) {
+		super();
+		this.factorial_hashtag = factorial_hashtag;
+	}
+	
+	
 }
